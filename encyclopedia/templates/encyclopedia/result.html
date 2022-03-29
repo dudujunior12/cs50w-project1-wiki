@@ -1,0 +1,19 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    {% if title %}
+    	{{ title }}
+    {%else%}
+    	Search
+    {%endif%}
+{% endblock %}
+
+{% block body %}
+	{% if match_entry %}
+		{% for entry in match_entry %}
+			<p><a href="{% url 'entry' qname=entry %}">{{ entry }}</a></p>
+		{% endfor %}
+	{% else %}
+	<p>{{ error }}</p>
+	{% endif %}
+{% endblock%}
